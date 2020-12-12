@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ublock-bug-missing-gpt-methods</title>
+  <style>
+    #hola-ad {
+      width: 300px;
+      height: 250px;
+      position: relative;
+      background-color: mistyrose;
+    }
+    #hola-ad::after {
+      content: "ad-content";
+      position: absolute;
+      background-color: red;
+      color: white;
+      padding: 1rem 0;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      font-family: sans-serif;
+      top: calc(50% - 1.5rem);
+      z-index: 0;
+    }
+    </style>
+  <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+</head>
+<body>
+  <h1>ublock-bug-missing-gpt-methods</h1>
+  <p>Missing neutralized GPT (<code>googletagservices_gpt.js</code>) library methods throw script errors.</p>
+  <script>
+    window.googletag = window.googletag || {cmd: []};
+    googletag.cmd.push(function() {
+      try {
+        googletag
+          .defineSlot('/567914328/test/desktop', [300, 250], 'hola-ad')
+          .updateTargetingFromMap({
+            'interests': ['privacy', 'using-ad-blocker']
+          })
+          .addService(googletag.pubads()); 
+        googletag.enableServices();
+        document.body.insertAdjacentHTML('beforeEnd', '<p>you-will-not-see-this-message-on-missing-gpt-api-method-calls</p>');
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  </script>
+  <div id="hola-ad">
+    <script>
+      googletag.cmd.push(function() {
+        googletag.display('hola-ad');
+      });
+    </script>
+  </div>
+</body>
+</html>
