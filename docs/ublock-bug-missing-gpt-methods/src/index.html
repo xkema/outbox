@@ -5,12 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ublock-bug-missing-gpt-methods</title>
   <style>
-    #hola-ad {
-      width: 300px;
-      height: 250px;
-      position: relative;
-      background-color: mistyrose;
-    }
+    body { font-family: sans-serif; }
+    #hola-ad { width: 300px; height: 250px; position: relative; background-color: mistyrose; }
     #hola-ad::after {
       content: "ad-content";
       position: absolute;
@@ -20,16 +16,21 @@
       width: 100%;
       text-align: center;
       font-size: 1rem;
-      font-family: sans-serif;
       top: calc(50% - 1.5rem);
       z-index: 0;
+    }
+    .site-dynamic-content {
+      background-color: palegreen;
+      border: 1px solid yellowgreen;
+      padding: 1rem 0;
+      text-align: center;
     }
     </style>
   <script async src="https://www.googletagservices.com/tag/js/gpt.js"></script>
 </head>
 <body>
   <h1>ublock-bug-missing-gpt-methods</h1>
-  <p>Missing neutralized GPT (<code>googletagservices_gpt.js</code>) library methods throw script errors.</p>
+  <p>Missing neutralized GPT (<code>googletagservices_gpt.js</code>) library method calls throw script errors.</p>
   <script>
     window.googletag = window.googletag || {cmd: []};
     googletag.cmd.push(function() {
@@ -41,7 +42,8 @@
           })
           .addService(googletag.pubads()); 
         googletag.enableServices();
-        document.body.insertAdjacentHTML('beforeEnd', '<p>you-will-not-see-this-message-on-missing-gpt-api-method-calls</p>');
+        // .site-dynamic-content
+        document.body.insertAdjacentHTML('beforeEnd', '<p class="site-dynamic-content">Page dynamic content inside the error block! It should be rendered to the page. <br>(you-will-not-see-this-message-on-missing-gpt-api-method-calls)</p>');
       } catch (error) {
         console.log(error);
       }
