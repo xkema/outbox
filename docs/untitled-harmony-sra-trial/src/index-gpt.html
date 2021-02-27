@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index-gpt.html | untitled-gpt-sra-trial</title>
+  <script src="./ad-config.js"></script>
+  <script async="async" src="//www.googletagservices.com/tag/js/gpt.js"></script>
+  <script type="text/javascript">
+    var gptadslots = [];
+    var googletag = googletag || {cmd:[]};
+  </script>
+</head>
+<body>  
+  <h3>hola index-gpt.html*</h3>
+
+  <code><pre style="background-color: rgba(0,0,0,.05); padding: 10px;">
+  adConfig.forEach(function(config) {
+    gptadslots.push(googletag.defineSlot(config.adunit, config.sizes, config.id).addService(googletag.pubads()));
+  });
+  googletag.pubads().enableSingleRequest();
+  googletag.enableServices();</pre></code>
+
+  <code><pre style="background-color: rgba(0,0,0,.05); padding: 10px;">
+  adConfig.forEach(function(config) {
+    googletag.display(config.id);
+  });</pre></code>
+
+  <ul>
+    <li>      
+      <p>hola-ad-div-1</p>
+      <div id="hola-ad-div-1"></div>
+    </li>
+    <li>      
+      <p>hola-ad-div-2</p>
+      <div id="hola-ad-div-2"></div>
+    </li>
+    <li>      
+      <p>hola-ad-div-3</p>
+      <div id="hola-ad-div-3"></div>
+    </li>
+  </ul>
+  <p><em>* disable adblockers</em></p>
+
+  <!-- gpt sra trial -->
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // define slots
+      googletag.cmd.push(function() {
+        adConfig.forEach(function(config) {
+          gptadslots.push(googletag.defineSlot(config.adunit, config.sizes, config.id).addService(googletag.pubads()));
+        });
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      });
+
+      // display ads
+      googletag.cmd.push(function() {
+        adConfig.forEach(function(config) {
+          googletag.display(config.id);
+        });
+      });
+
+      // write config data to slots
+      adConfig.forEach(function(config) {
+        var slotContainer = document.getElementById(config.id);
+        slotContainer.previousElementSibling.innerHTML += '<br> <strong>adunit</strong>:' + config.adunit + '<br><strong>sizes</strong>: ' + config.sizes.join(', ').replace(',', 'x');
+      });
+
+    });
+  </script>
+</body>
+</html>

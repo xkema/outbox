@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>index-harmony-corrected.html | untitled-harmony-sra-trial</title>
+  <script src="./harmony.7.4.2.min.js"></script>
+  <script src="./ad-config.js"></script>
+  <script src="//www.googletagservices.com/tag/js/gpt.js"></script>
+</head>
+<body>  
+  <h3>hola index-harmony-corrected.html*</h3>
+
+  <code><pre style="background-color: rgba(0,0,0,.05); padding: 10px;">
+  googletag.pubads().enableSingleRequest();
+  harmony.load.slots(adConfig);
+  harmony.show.all();</pre></code>
+
+  <ul>
+    <li>      
+      <p>hola-ad-div-1</p>
+      <div id="hola-ad-div-1"></div>
+    </li>
+    <li>      
+      <p>hola-ad-div-2</p>
+      <div id="hola-ad-div-2"></div>
+    </li>
+    <li>      
+      <p>hola-ad-div-3</p>
+      <div id="hola-ad-div-3"></div>
+    </li>
+  </ul>
+  <p><em>* disable adblockers</em></p>
+  
+  <!-- harmony sra trial -->
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // load & show slots
+      googletag.pubads().enableSingleRequest();
+      harmony.load.slots(adConfig);
+      harmony.show.all();
+
+      // write config data to slots
+      adConfig.forEach(function(config) {
+        var slotContainer = document.getElementById(config.id);
+        slotContainer.previousElementSibling.innerHTML += '<br> <strong>adunit</strong>: ' + config.adunit + '<br><strong>sizes</strong>: ' + config.sizes.join(', ').replace(',', 'x');
+      });
+      
+    });
+  </script>
+</body>
+</html>
